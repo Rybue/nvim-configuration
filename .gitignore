@@ -1,0 +1,20 @@
+# Local runtime output
+*.log
+nvim.log
+
+# Local tool metadata
+.codex
+
+# Vim/Neovim local files
+*.swp
+*.swo
+*.tmp
+Session.vim
+shada/
+swap/
+undo/
+backup/
+view/
+
+# OS/editor noise
+.DS_Store
