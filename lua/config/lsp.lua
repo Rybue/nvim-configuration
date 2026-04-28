@@ -36,8 +36,47 @@ vim.api.nvim_create_autocmd("LspAttach", {
 			vim.keymap.set(mode, lhs, rhs, { buffer = ev.buf, desc = desc })
 		end
 
+		local function source_action(kind)
+			vim.lsp.buf.code_action({
+				apply = true,
+				context = {
+					only = { kind },
+					diagnostics = {},
+				},
+			})
+		end
+
+		map("n", "<leader>le", function()
+			vim.diagnostic.open_float({ scope = "line" })
+		end, "Line diagnostics")
+		map("n", "<leader>ld", function()
+			Snacks.picker.diagnostics_buffer()
+		end, "Buffer diagnostics")
+		map("n", "<leader>ll", function()
+			Snacks.picker.loclist()
+		end, "Location list")
+		map("n", "<leader>lq", function()
+			Snacks.picker.qflist()
+		end, "Quickfix list")
+
 		if supports("textDocument/signatureHelp") then
 			map("i", "<C-k>", vim.lsp.buf.signature_help, "Signature help")
+		end
+
+		if supports("textDocument/formatting") then
+			map("n", "<leader>lf", function()
+				vim.lsp.buf.format({ bufnr = ev.buf, async = true })
+			end, "Format buffer")
+		end
+
+		if supports("textDocument/codeAction") then
+			map({ "n", "v" }, "<leader>la", vim.lsp.buf.code_action, "Code action")
+			map("n", "<leader>li", function()
+				source_action("source.organizeImports")
+			end, "Organize imports")
+			map("n", "<leader>lF", function()
+				source_action("source.fixAll")
+			end, "Fix all")
 		end
 
 		if supports("textDocument/definition") then

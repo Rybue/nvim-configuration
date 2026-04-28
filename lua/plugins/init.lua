@@ -12,6 +12,7 @@ vim.pack.add({
 	-- Git
 	{ src = "https://github.com/lewis6991/gitsigns.nvim" },
 	-- UI / pickers / input
+	{ src = "https://github.com/nvim-lualine/lualine.nvim" },
 	{ src = "https://github.com/folke/snacks.nvim" },
 	-- Completion
 	{ src = "https://github.com/Saghen/blink.cmp", version = vim.version.range("1.*") },
@@ -26,6 +27,7 @@ require("plugins.catppuccin")
 vim.cmd.colorscheme("catppuccin")
 
 require("plugins.mini_icons")
+require("plugins.lualine")
 require("plugins.which-key")
 require("plugins.gitsigns")
 require("plugins.undotree")
