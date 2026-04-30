@@ -6,6 +6,7 @@ vim.pack.add({
 	{ src = "https://github.com/folke/lazydev.nvim" },
 	-- Treesitter
 	{ src = "https://github.com/nvim-treesitter/nvim-treesitter", version = "main" },
+	{ src = "https://github.com/nvim-treesitter/nvim-treesitter-textobjects", version = "main" },
 	-- Keybinding helper
 	{ src = "https://github.com/nvim-mini/mini.icons" },
 	{ src = "https://github.com/folke/which-key.nvim" },
@@ -34,4 +35,5 @@ require("plugins.undotree")
 require("plugins.snacks")
 require("plugins.lazydev")
 require("plugins.treesitter")
+require("plugins.treesitter_textobjects")
 require("plugins.blink")
